@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
  <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'kdbog' ); ?></a>
 	<header id="masthead" class="site-header">
-		<div class="nav-wrap">
+		<div class="wrapper-header">
 			<div class="site-branding">
 				<?php
 				the_custom_logo();
@@ -43,39 +43,42 @@ defined( 'ABSPATH' ) || exit;
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 
-			<nav id="site-navigation" class="main-navigation">
+
+			<div class="wrapper-nav" id="nav">
 				<button class="menu-toggle" id="menu" title="menu" aria-controls="primary-menu" aria-expanded="false">
 					<svg viewBox='0 0 10 8' width='30'>
 					  <path d='M1 1h8M1 4h 8M1 7h8' 
-					        stroke='#000' 
-					        stroke-width='2' 
+					        stroke='#fff' 
+					        stroke-width='1.5' 
 					        stroke-linecap='round'/>
 						</svg> 
 				</button>
-				<div class="desktop-menu">
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'menu-1',
-						'menu_id'        => 'primary-menu',
-					)
+				<nav id="site-navigation" class="main-navigation">
+					<ul class="primary-menu reset-list-style">
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'menu-1',
+								'menu_id'        => 'primary-menu',
+							)
 
-				);
-				?>
-				</div>
+						);
+						?>
+					<ul>
 
 
-			</nav><!-- #site-navigation -->
+				</nav><!-- #site-navigation -->
+			</div>
 		</div>
 	</header><!-- #masthead -->
-		<div class="mobile-menu" id="mobile-menu">
+	<nav id="mobile-navigation" class="mobile-navigation">
 					<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'menu-1',
-						'menu_id'        => 'mobile-menu',
-					)
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-3',
+							'menu_id'        => 'mobile-menu',
+						)
 
-				);
-				?>
-				</div>
+					);
+					?>
+				</nav>

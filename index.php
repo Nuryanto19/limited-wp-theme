@@ -10,11 +10,14 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 
-
 	<main class="site-main" id="main">
 		<?php 
+
 		if ( have_posts() ) : ?>
 			<div class="wrap-home">
+				<div class="wrap-title-section">
+				<span class="title-section">Recent Posts</span>
+				</div>
 				<div class="wrap-content">
 				<!-- //start the loop -->
 					<?php

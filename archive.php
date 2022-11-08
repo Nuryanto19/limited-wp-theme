@@ -10,11 +10,16 @@ get_header();
  ?>
  		<!-- yoast breadchrumb -->
 			<?php
-			if ( function_exists('yoast_breadcrumb') ) {
-			  yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
-			}
-			?>
-			<!-- end yoast breadchrumb -->
+				if ( function_exists('yoast_breadcrumb') ) { ?>
+
+					<div class="yoast-breadchrumbs">
+				<?php
+				  yoast_breadcrumb( '<p id="breadcrumbs" class="breadcrumbs">','</p>' );
+				 ?>
+				  </div>
+				  <?php } ?>
+				  
+		<!-- end yoast breadchrumb -->
 
 	<main id="main" class="site-main">
 

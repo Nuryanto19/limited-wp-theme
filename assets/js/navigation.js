@@ -6,24 +6,25 @@
  */
 
  (function() {
- 	const siteNavigation = document.getElementById( 'site-navigation' );
+ 	const nav = document.getElementById( 'nav' );
  	//return early if the navigation doesn't exist.
- 	if ( ! siteNavigation ) {
+ 	if ( ! nav ) {
  		return;
  	}
 
- 	const mobileMenu = document.getElementById('mobile-menu');
- 	if ( ! mobileMenu ) {
+ 	const mobileNavigation = document.getElementById( 'mobile-navigation' );
+ 	//return early if the navigation doesn't exist.
+ 	if ( ! mobileNavigation ) {
  		return;
  	}
 
- 	const button = siteNavigation.getElementsByTagName( 'button' )[ 0 ];
+ 	const button = nav.getElementsByTagName( 'button' )[ 0 ];
  	//return early if the button doesn't exist.
  	if ( 'undefined' === typeof button ) {
  		return;
  	}
 
- 	const menu = siteNavigation.getElementsByTagName('ul')[ 0 ];
+ 	const menu = nav.getElementsByTagName('ul')[ 0 ];
  	//hide menu toggle button if menu is empty and return early
  	if ( 'undefined' === typeof menu ) {
  		button.style.display = 'none';
@@ -35,7 +36,7 @@
 
  	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
  	button.addEventListener( 'click' , function() {
- 		mobileMenu.classList.toggle( 'toggled' );
+ 		mobileNavigation.classList.toggle( 'toggled' );
 
  		if ( button.getAttribute( 'aria-expanded' ) === 'true') {
  			button.setAttribute( 'aria-expanded', 'false' );
@@ -46,10 +47,10 @@
 
  	// Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
  	document.addEventListener( 'click', function( event ) {
- 		const isClickInside = siteNavigation.contains( event.target );
+ 		const isClickInside = nav.contains( event.target );
 
  		if ( ! isClickInside ) {
- 			siteNavigation.classList.remove( 'toggled' );
+ 			mobileNavigation.classList.remove( 'toggled' );
  			button.setAttribute( 'aria-expanded', 'false' );
  		}
  	} );

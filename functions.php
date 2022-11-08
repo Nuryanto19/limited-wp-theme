@@ -21,7 +21,7 @@ function limited_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'limited' ),
-			'menu-2' => esc_html__( 'Secondary', 'limited' ),
+			'menu-2' => esc_html__( 'footer', 'limited' ),
 			'menu-3' => esc_html__( 'Mobile', 'limited' )
 		)
 	);
@@ -67,8 +67,6 @@ function limited_setup() {
 add_action( 'after_setup_theme', 'limited_setup');
 
 
-
-
 /**
  * Enqueue scripts and styles.
  */
@@ -81,14 +79,8 @@ function limited_scripts(){
 add_action( 'wp_enqueue_scripts','limited_scripts');
 
 
-require get_template_directory() . '/inc/custom-header.php';
-require get_template_directory() . '/inc/template-tags.php';
-require get_template_directory() . '/inc/pagination.php';
-require get_template_directory() . '/inc/hooks.php';
-
-
 /**
- * Filter the excerpt length to 30 words.
+ * Filter the excerpt length to 20 words.
  *
  * @param int $length Excerpt length.
  * @return int (Maybe) modified excerpt length.
@@ -98,16 +90,31 @@ function limited_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'limited_excerpt_length');
 
-add_filter( 'comment_form_defaults', 'custom_reply_title' );
+/* read more link on excerpt*/
+function limited_excerpt_more( $more ) {
+	return '';
+}
+add_filter( 'excerpt_more', 'limited_excerpt_more' );
+
+
+/* chance heading tag for comment title*/
 function custom_reply_title( $defaults ){
   $defaults['title_reply_before'] = '<span id="reply-title" class="h4 comment-reply-title">';
   $defaults['title_reply_after'] = '</span>';
   return $defaults;
 }
+add_filter( 'comment_form_defaults', 'custom_reply_title' );
 
-add_filter('comment_form_default_fields', 'unset_url_field');
+
+/* remove url field from comment form*/
 function unset_url_field($fields){
     if(isset($fields['url']))
        unset($fields['url']);
        return $fields;
 }
+add_filter('comment_form_default_fields', 'unset_url_field');
+
+
+require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/pagination.php';
+require get_template_directory() . '/inc/hooks.php';
