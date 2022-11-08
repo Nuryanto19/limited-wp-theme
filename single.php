@@ -9,17 +9,21 @@ defined( 'ABSPATH' ) || exit;
 get_header();
  ?>
 <div id="primary" class="content-area">
+	<!-- yoast breadchrumb -->
+
 			<?php
-				if ( function_exists('yoast_breadcrumb') ) {
+				if ( function_exists('yoast_breadcrumb') ) { ?>
+
+					<div class="yoast-breadchrumbs">
+				<?php
 				  yoast_breadcrumb( '<p id="breadcrumbs" class="breadcrumbs">','</p>' );
-				}
-			?>
+				 ?>
+				  </div>
+				  <?php } ?>
+				  
+	<!-- end yoast breadchrumb -->
 
 		<main id="single-main" class="single-main">
-			
-			<!-- yoast breadchrumb -->
-	 		
-			<!-- end yoast breadchrumb -->
 			
 			<?php
 
