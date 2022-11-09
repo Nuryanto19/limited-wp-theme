@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) || exit;
  <?php do_action( 'wp_body_open') ?>
 
  <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'kdbog' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'limited' ); ?></a>
 	<header id="masthead" class="site-header">
 		<div class="wrapper-header">
 			<div class="site-branding">
@@ -36,10 +36,10 @@ defined( 'ABSPATH' ) || exit;
 					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 					<?php
 				endif;
-				$kdbog_description = get_bloginfo( 'description', 'display' );
-				if ( $kdbog_description || is_customize_preview() ) :
+				$limited_description = get_bloginfo( 'description', 'display' );
+				if ( $limited_description || is_customize_preview() ) :
 					?>
-					<p class="site-description"><?php echo $kdbog_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+					<p class="site-description"><?php echo $limited_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 
@@ -54,7 +54,6 @@ defined( 'ABSPATH' ) || exit;
 						</svg> 
 				</button>
 				<nav id="site-navigation" class="main-navigation">
-					<ul class="primary-menu reset-list-style">
 						<?php
 						wp_nav_menu(
 							array(
@@ -64,9 +63,6 @@ defined( 'ABSPATH' ) || exit;
 
 						);
 						?>
-					<ul>
-
-
 				</nav><!-- #site-navigation -->
 			</div>
 		</div>

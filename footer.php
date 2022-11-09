@@ -7,8 +7,6 @@ contain footer
 defined( 'ABSPATH' ) || exit;
 ?>
 	<footer id="colophon" class="site-footer">
-		<nav id="site-navigation" class="footer-menu">
-					<ul class="primary-menu reset-list-style">
 						<?php
 						wp_nav_menu(
 							array(
@@ -18,9 +16,6 @@ defined( 'ABSPATH' ) || exit;
 
 						);
 						?>
-					<ul>
-
-
 				</nav><!-- #site-navigation -->
 			
 		<div class="site-info">
